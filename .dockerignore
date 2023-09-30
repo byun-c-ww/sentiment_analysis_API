@@ -1,0 +1,11 @@
+# Exclude Git-related files
+.git
+.gitignore
+
+# Exclude serverless-related files
+.serverless
+
+# Exclude other files or directories
+node_modules
+__pycache__
+*.log
