@@ -3,6 +3,7 @@ from service.api.api import main_router
 from fastapi import FastAPI
 import onnxruntime as rt
 from fastapi.middleware.cors import CORSMiddleware
+import logging
 
 app = FastAPI()
 
@@ -19,7 +20,11 @@ app.add_middleware(
 
 @app.get("/")
 async def root():
-    return {"message": "Hello World"}
+    try:
+        result = {"message": "Hello World"}
+        return result
+    except Exception as e:
+        return logging.exception("error occured from root hello world!! error:")
 
 app.include_router(main_router)
 
