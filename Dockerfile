@@ -1,20 +1,21 @@
-# Use the official Python 3.9 image as the base image
-FROM python:3.9
+# Use the official Python 3.9 Alpine image as the base image
+FROM python:3.9-alpine
 
 # Set the working directory inside the container
 WORKDIR /app
 
-# Install Git to clone the repository
-RUN apt-get update && apt-get install -y git
+# moved from being ran together with pip install
+# RUN pip install --upgrade pip
 
-# Clone the GitHub repository
-RUN git clone https://github.com/byun-c-ww/sentiment_analysis_API.git
+# Install Git and clone the repository
+RUN apk --no-cache add git \
+    && git clone https://github.com/byun-c-ww/sentiment_analysis_API.git
 
 # Change the working directory to the cloned repository
 WORKDIR /app/sentiment_analysis_API
 
-# Install Python dependencies
-RUN pip3 install -r requirements.txt
+# install with pip
+RUN pip install -r requirements.txt
 
 # Expose port 8080
 EXPOSE 8080
