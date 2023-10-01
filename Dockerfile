@@ -4,8 +4,8 @@ FROM python:3.9-alpine
 # Set the working directory inside the container
 WORKDIR /app
 
-# moved from being ran together with pip install
-RUN pip install --upgrade pip
+# update package manager
+RUN apk update
 
 # Install Git and clone the repository
 RUN apk --no-cache add git \
