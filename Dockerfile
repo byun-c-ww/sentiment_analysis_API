@@ -5,7 +5,7 @@ FROM python:3.9-alpine
 WORKDIR /app
 
 # moved from being ran together with pip install
-RUN pip install --upgrade pip
+# RUN pip install --upgrade pip
 
 # Install Git and clone the repository
 RUN apk --no-cache add git \
@@ -15,7 +15,7 @@ RUN apk --no-cache add git \
 WORKDIR /app/sentiment_analysis_API
 
 # install with pip
-RUN pip3 install -r requirements.txt
+RUN pip install -r requirements.txt
 
 # Expose port 8080
 EXPOSE 8080
