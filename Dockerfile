@@ -5,7 +5,7 @@ FROM python:3.9-alpine
 WORKDIR /app
 
 # moved from being ran together with pip install
-# RUN pip install --upgrade pip
+RUN pip install --upgrade pip
 
 # Install Git and clone the repository
 RUN apk --no-cache add git \
