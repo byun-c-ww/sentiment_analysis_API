@@ -5,11 +5,10 @@ FROM python:3.9
 WORKDIR /app
 
 # update package manager
-RUN apk update
+RUN apt-get update && apt-get install -y git
 
 # Install Git and clone the repository
-RUN apk --no-cache add git \
-    && git clone https://github.com/byun-c-ww/sentiment_analysis_API.git
+RUN git clone https://github.com/byun-c-ww/sentiment_analysis_API.git
 
 # Change the working directory to the cloned repository
 WORKDIR /app/sentiment_analysis_API
